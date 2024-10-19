@@ -16,6 +16,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
@@ -48,7 +49,6 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Add Sensors for statistics
 RUN apt-get update && apt-get install -y sysstat lm-sensors
 
-
 # Final stage for app image
 FROM base
 
@@ -61,6 +61,11 @@ RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
+
+
+# add tmp folder
+RUN mkdir -p /rails/tmp/cache /rails/tmp/pids /rails/log && chown -R rails:rails /rails/tmp /rails/log
+
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
