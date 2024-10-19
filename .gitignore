@@ -29,6 +29,8 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
+/data/postgres/
+
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
