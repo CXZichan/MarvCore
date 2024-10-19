@@ -1,0 +1,47 @@
+<h1>Server Monitoring</h1>
+
+<div class="grid-container">
+  <div class="grid-item">
+    <h2>CPU Usage</h2>
+    <p><%= @cpu_usage %>%</p>
+  </div>
+
+  <div class="grid-item">
+    <h2>Disk Usage</h2>
+    <p><%= @disk_usage %></p>
+  </div>
+
+  <div class="grid-item">
+    <h2>Temperature</h2>
+    <p><%= @temperature %>°C</p>
+  </div>
+</div>
+
+<h2>Control Panel</h2>
+<a href="/start_server">Start Server</a>
+<a href="/stop_server">Stop Server</a>
+<a href="/restart_server">Restart Server</a>
+
+
+<h1>Docker Container Monitoring</h1>
+
+<div class="grid-container">
+  <!-- Minecraft Server Kachel -->
+  <div class="grid-item">
+    <h2>Minecraft Server</h2>
+    <p>Status: <%= @mc_server_status %></p>
+    <a href="/start_mc">Start</a>
+    <a href="/stop_mc">Stop</a>
+    <a href="/restart_mc">Restart</a>
+  </div>
+
+  <!-- CS2 Server Kachel -->
+  <div class="grid-item">
+    <h2>CS2 Server</h2>
+    <p>Status: <%= @cs2_server_status %></p>
+    <a href="/start_cs2">Start</a>
+    <a href="/stop_cs2">Stop</a>
+    <a href="/restart_cs2">Restart</a>
+  </div>
+</div>
+
