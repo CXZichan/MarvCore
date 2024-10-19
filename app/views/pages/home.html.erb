@@ -3,7 +3,8 @@
 <div class="grid-container">
   <div class="grid-item">
     <h2>CPU Usage</h2>
-    <p><%= @cpu_usage %>%</p>
+    <p><%= @cpu_usage %>% used</p>
+    <p><%= @cpu_idle %>% idle</p>
   </div>
 
   <div class="grid-item">
@@ -13,7 +14,7 @@
 
   <div class="grid-item">
     <h2>Temperature</h2>
-    <p><%= @temperature %>°C</p>
+    <p><%= @average_temperature %>°C</p>
   </div>
 </div>
 
@@ -21,7 +22,6 @@
 <a href="/start_server">Start Server</a>
 <a href="/stop_server">Stop Server</a>
 <a href="/restart_server">Restart Server</a>
-
 
 <h1>Docker Container Monitoring</h1>
 
@@ -44,4 +44,3 @@
     <a href="/restart_cs2">Restart</a>
   </div>
 </div>
-

@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
   def home
-    @cpu_usage = `mpstat | grep 'all' | awk '{print 100 - $13}'`
+    @cpu_usage = `mpstat | grep 'all' | awk '{print $3}'`
+    @cpu_idle = `mpstat | grep 'all' | awk '{print $12}'`
     @disk_usage = `df -h / | awk 'NR==2 {print $3 " used out of " $2}'`
-    @temperature = `sensors | grep 'Core 0' | awk '{print $3}'`
+    @average_temperature = `sensors | grep 'Core' | awk '{print $3}' | sed 's/+//g' | cut -d'°' -f1 | awk '{sum+=$1} END {print sum/NR}'`
     @mc_server_status = `docker inspect -f '{{.State.Status}}' mc-server`.strip
     @cs2_server_status = `docker inspect -f '{{.State.Status}}' cs2-server`.strip
-
   end
 
   def start_server

@@ -64,8 +64,8 @@ USER 1000:1000
 
 
 # add tmp folder
-RUN mkdir -p /rails/tmp/cache /rails/tmp/pids /rails/log && chown -R rails:rails /rails/tmp /rails/log
-
+#RUN mkdir -p /rails/tmp/cache /rails/tmp/pids /rails/log && chown -R rails:rails /rails/tmp /rails/log
+RUN mkdir -p /rails/tmp/cache /rails/tmp/pids /rails/log && chown -R 1000:1000 /rails/tmp /rails/log
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
